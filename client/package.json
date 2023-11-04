@@ -3,18 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "yarn server & next dev",
+    "dev": "yarn server & yarn generate & next dev",
     "build": "next build",
     "start": "next start",
-    "server": "yarn run json-graphql-server ../server/db.js --p 3001",
-    "test": "jest"
+    "server": "yarn run json-graphql-server ../server/db.js --p 3002",
+    "test": "jest",
+    "generate": "graphql-codegen"
   },
   "dependencies": {
+    "@apollo/client": "^3.8.7",
+    "graphql": "^16.8.1",
     "next": "12.2.1",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/client-preset": "^4.1.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.5",
     "eslint": "^8.19.0",
