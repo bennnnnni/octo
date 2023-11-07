@@ -63,16 +63,58 @@ export default function Product() {
   const { data, loading, error } = useQuery(PRODUCT_BY_ID, {
     variables: { id: PRODUCT_ID },
   });
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
+  const [basketContent, setBasketContent] = useState<string[]>([]);
 
-  if (error) {
-    console.error(error);
-    return null;
-  }
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error</p>;
 
-  const product = data.Product;
+  const {
+    brand,
+    colour,
+    description,
+    height,
+    id,
+    img_url,
+    length,
+    model_code,
+    name,
+    power,
+    price,
+    quantity,
+    weight,
+    width,
+  } = data.Product;
+
+  const handleAddToCartClick = () => {
+    setBasketContent((prevState) => {
+      return [...prevState, ...new Array(selectedQuantity).fill(id)];
+    });
+  };
+
+  const productSpecs = [
+    {
+      item: `Brand`,
+      value: brand,
+    },
+    {
+      item: `Item weight (g)`,
+      value: weight,
+    },
+    {
+      item: `Dimensions (cm)`,
+      value: `${height} x ${width} x ${length}`,
+    },
+    {
+      item: `Item model number`,
+      value: model_code,
+    },
+    {
+      item: `Colour`,
+      value: colour,
+    },
+  ];
+
   return (
     <div className="flex flex-col items-center min-h-screen">
       <header className="flex flex-row items-center justify-between px-4 py-2 min-w-full">
