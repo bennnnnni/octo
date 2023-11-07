@@ -1,3 +1,4 @@
+import { FC, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { PRODUCT_BY_ID } from "../operations/product";
 
