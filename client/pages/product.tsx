@@ -192,6 +192,19 @@ export default function Product() {
           </ContentSection>
         </DetailSection>
 
+        <DetailSection>
+          <ContentSection title="Specification">
+            <dl>
+              {productSpecs.map((spec) => (
+                <DefinitionListEntry
+                  key={spec.item}
+                  item={spec.item}
+                  value={spec.value}
+                />
+              ))}
+            </dl>
+          </ContentSection>
+        </DetailSection>
       </main>
 
       <footer className="text-purpleHaze text-[8px] p-4 bg-hemocyanin flex flex-col items-center mt-auto min-w-full">
