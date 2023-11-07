@@ -142,6 +142,50 @@ export default function Product() {
             <span className="text-purpleHaze self-start text-xs">{`${power} // Packet of ${quantity}`}</span>
           </ContentSection>
         </DetailSection>
+
+        <DetailSection>
+          <ContentSection customStyling="gap-2">
+            <div className="flex justify-between items-end min-w-full">
+              <span className="text-xl">{`£${(price / 100).toFixed(2)}`}</span>
+              <div className="flex flex-col items-center gap-1">
+                <span className="text-[8px]">Qty</span>
+                <div className="flex gap-1 items-center">
+                  <BaseButton
+                    customStyles=" h-7 w-7 text-sm"
+                    disabled={selectedQuantity === 1}
+                    onClick={() =>
+                      setSelectedQuantity((prevState) => prevState - 1)
+                    }
+                  >
+                    {"-"}
+                  </BaseButton>
+                  <div
+                    title="Current quantity"
+                    className="min-w-[12px] text-xl px-1"
+                  >
+                    {selectedQuantity}
+                  </div>
+                  <BaseButton
+                    customStyles=" h-7 w-7 text-sm"
+                    disabled={selectedQuantity === 50}
+                    onClick={() =>
+                      setSelectedQuantity((prevState) => prevState + 1)
+                    }
+                  >
+                    {"+"}
+                  </BaseButton>
+                </div>
+              </div>
+            </div>
+            <BaseButton
+              customStyles=" min-w-full p-4 text-sm"
+              onClick={handleAddToCartClick}
+            >
+              Add to cart
+            </BaseButton>
+          </ContentSection>
+        </DetailSection>
+
       </main>
 
       <footer className="text-purpleHaze text-[8px] p-4 bg-hemocyanin flex flex-col items-center mt-auto min-w-full">
