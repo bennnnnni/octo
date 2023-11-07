@@ -1,6 +1,8 @@
 import { useQuery } from "@apollo/client";
 import { PRODUCT_BY_ID } from "../operations/product";
 
+const FOOTER_TEXT_COMPANY = `Octopus Energy Ltd is a company registered in England and Wales.`;
+const FOOTER_TEXT_REGISTRATION = `Registered number: 09263424. Registered office: UK House, 5th floor, 164-182 Oxford Street, London, W1D 1NN.`;
 const PRODUCT_ID = "1";
 
 interface DetailSectionPropsI extends React.HTMLAttributes<HTMLElement> {
@@ -67,9 +69,22 @@ export default function Product() {
 
   const product = data.Product;
   return (
-    <div>
-      <div>{`Client side rendering`}</div>
-      <div>{product.id}</div>
+    <div className="flex flex-col items-center min-h-screen">
+      <header className="flex flex-row items-center justify-between px-4 py-2 min-w-full">
+        <Image
+          src={CompanyLogo}
+          width={176}
+          height={32}
+          alt="octopus energy company logo"
+        />
+        <Basket itemCount={basketContent.length} />
+      </header>
+
+
+      <footer className="text-purpleHaze text-[8px] p-4 bg-hemocyanin flex flex-col items-center mt-auto min-w-full">
+        <p>{FOOTER_TEXT_COMPANY}</p>
+        <p>{FOOTER_TEXT_REGISTRATION}</p>
+      </footer>
     </div>
   );
 }
