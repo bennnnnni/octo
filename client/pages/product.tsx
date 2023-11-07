@@ -127,6 +127,22 @@ export default function Product() {
         <Basket itemCount={basketContent.length} />
       </header>
 
+      <main className="min-w-full">
+        <DetailSection>
+          <ContentSection customStyling="gap-2">
+            <div className="min-w-fit [&>span]:rounded-2xl">
+              <Image
+                src={img_url}
+                width={360}
+                height={400}
+                alt={`product picture of ${name}`}
+              />
+            </div>
+            <h1 className="text-3xl">{name}</h1>
+            <span className="text-purpleHaze self-start text-xs">{`${power} // Packet of ${quantity}`}</span>
+          </ContentSection>
+        </DetailSection>
+      </main>
 
       <footer className="text-purpleHaze text-[8px] p-4 bg-hemocyanin flex flex-col items-center mt-auto min-w-full">
         <p>{FOOTER_TEXT_COMPANY}</p>
