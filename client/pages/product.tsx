@@ -1,6 +1,10 @@
 import { FC, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { PRODUCT_BY_ID } from "../operations/product";
+import Image from "next/image";
+import CompanyLogo from "../public/octopus-logo.svg";
+import { BaseButton } from "./components/product/BaseButton";
+import { Basket } from "./components/product/Basket";
 
 const FOOTER_TEXT_COMPANY = `Octopus Energy Ltd is a company registered in England and Wales.`;
 const FOOTER_TEXT_REGISTRATION = `Registered number: 09263424. Registered office: UK House, 5th floor, 164-182 Oxford Street, London, W1D 1NN.`;
