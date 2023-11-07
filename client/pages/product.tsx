@@ -186,6 +186,12 @@ export default function Product() {
           </ContentSection>
         </DetailSection>
 
+        <DetailSection variant="bright">
+          <ContentSection title="Description">
+            <p className="text-sm font-light tracking-wide">{description}</p>
+          </ContentSection>
+        </DetailSection>
+
       </main>
 
       <footer className="text-purpleHaze text-[8px] p-4 bg-hemocyanin flex flex-col items-center mt-auto min-w-full">
