@@ -79,8 +79,8 @@ export default function Product() {
       </header>
 
       <main className="min-w-full">
-        <DetailSection>
-          <ContentSection customStyling="gap-2">
+        <ProductDetail>
+          <Content customStyling="gap-2">
             <div className="min-w-fit [&>span]:rounded-2xl">
               <Image
                 src={img_url}
@@ -91,11 +91,11 @@ export default function Product() {
             </div>
             <h1 className="text-3xl">{name}</h1>
             <span className="text-purpleHaze self-start text-xs">{`${power} // Packet of ${quantity}`}</span>
-          </ContentSection>
-        </DetailSection>
+          </Content>
+        </ProductDetail>
 
-        <DetailSection>
-          <ContentSection customStyling="gap-2">
+        <ProductDetail>
+          <Content customStyling="gap-2">
             <div className="flex justify-between items-end min-w-full">
               <span className="text-xl">{`£${(price / 100).toFixed(2)}`}</span>
               <div className="flex flex-col items-center gap-1">
@@ -134,17 +134,17 @@ export default function Product() {
             >
               Add to cart
             </BaseButton>
-          </ContentSection>
-        </DetailSection>
+          </Content>
+        </ProductDetail>
 
-        <DetailSection variant="bright">
-          <ContentSection title="Description">
+        <ProductDetail variant="bright">
+          <Content heading="Description">
             <p className="text-sm font-light tracking-wide">{description}</p>
-          </ContentSection>
-        </DetailSection>
+          </Content>
+        </ProductDetail>
 
-        <DetailSection>
-          <ContentSection title="Specification">
+        <ProductDetail>
+          <Content heading="Specification">
             <dl>
               {productSpecs.map((spec) => (
                 <DefinitionListEntry
@@ -154,8 +154,8 @@ export default function Product() {
                 />
               ))}
             </dl>
-          </ContentSection>
-        </DetailSection>
+          </Content>
+        </ProductDetail>
       </main>
 
       <footer className="text-purpleHaze text-[8px] p-4 bg-hemocyanin flex flex-col items-center mt-auto min-w-full">
@@ -166,11 +166,11 @@ export default function Product() {
   );
 }
 
-interface DetailSectionPropsI extends React.HTMLAttributes<HTMLElement> {
+interface ProductDetailPropsI extends React.HTMLAttributes<HTMLElement> {
   variant?: "dark" | "bright";
 }
 
-const DetailSection: FC<DetailSectionPropsI> = ({
+const ProductDetail: FC<ProductDetailPropsI> = ({
   children,
   variant = "dark",
 }) => {
@@ -181,19 +181,19 @@ const DetailSection: FC<DetailSectionPropsI> = ({
   return <div className={styling}>{children}</div>;
 };
 
-interface ContentSectionPropsI extends React.HTMLAttributes<HTMLElement> {
-  title?: string;
+interface ContentPropsI extends React.HTMLAttributes<HTMLElement> {
+  heading?: string;
   customStyling?: string;
 }
 
-const ContentSection: FC<ContentSectionPropsI> = ({
+const Content: FC<ContentPropsI> = ({
   children,
-  title,
+  heading,
   customStyling = "",
 }) => {
   return (
     <section className={`max-w-[22.5rem] grow flex flex-col ${customStyling}`}>
-      {title ? <h2 className="pb-4 text-2xl">{title}</h2> : null}
+      {heading ? <h2 className="pb-4 text-2xl">{heading}</h2> : null}
       {children}
     </section>
   );
